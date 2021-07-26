@@ -37,7 +37,7 @@ public class ApiUtils {
     }
 
     public Response getLocationByDate(String woeid, String requestedDay){
-        baseURI="https://www.metaweather.com/api";
+        baseURI = ConfigurationReader.get("mw_URI");
         return  given().accept(ContentType.JSON)
                 .pathParam("location", woeid)
                 .when()
@@ -46,7 +46,7 @@ public class ApiUtils {
 
 
     public void getWeather(String woeid, String requestedDay){
-        baseURI="https://www.metaweather.com/api";
+        baseURI = ConfigurationReader.get("mw_URI");
         Response response= given().accept(ContentType.JSON)
                             .when().get("/location/"+woeid+"/"+requestedDay);
        JsonPath jsonData = response.jsonPath();
