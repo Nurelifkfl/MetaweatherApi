@@ -1,6 +1,5 @@
 package com.metaweather.utilities;
 
-import com.metaweather.stepDefinitions.hooks;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -13,6 +12,7 @@ import static io.restassured.RestAssured.*;
 
 public class ApiUtils {
     int woeid;
+    String weather_state_name;
 
 
     public int getWoeid(String location) {
@@ -22,7 +22,6 @@ public class ApiUtils {
                 .queryParam("query", location).and()
                 .when()
                 .get("/location/search");
-
 
 
         Assert.assertEquals("Checking response status code 200", response.statusCode(), 200);
@@ -39,11 +38,23 @@ public class ApiUtils {
 
     public Response getLocationByDate(String woeid, String requestedDay){
         baseURI="https://www.metaweather.com/api";
-        return  given().accept(ContentType.JSON).and().contentType(ContentType.JSON)
+        return  given().accept(ContentType.JSON)
                 .pathParam("location", woeid)
                 .when()
                 .get("/location/{location}/" + requestedDay);
     }
 
 
-}
+    public void getWeather(String woeid, String requestedDay){
+        baseURI="https://www.metaweather.com/api";
+        Response response= given().accept(ContentType.JSON)
+                            .when().get("/location/"+woeid+"/"+requestedDay);
+       JsonPath jsonData = response.jsonPath();
+       String weather = jsonData.getString("weather_state_name[0]");
+
+       System.out.println(weather);
+
+
+
+    }
+        }

@@ -6,15 +6,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
-import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 
 import java.util.Date;
 
 import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.everyItem;
 import static org.hamcrest.core.IsNull.notNullValue;
@@ -26,6 +23,7 @@ public class ApiStepDef {
 
     @Given("the user is a MetaWeather client")
     public void the_user_is_a_MetaWeather_client() {
+        baseURI="https://www.metaweather.com/api";
     //No authorization is needed its a public API
     //if it's not, I would generate access token for authentication header
 
@@ -41,8 +39,10 @@ public class ApiStepDef {
         System.out.println(location + "'s woeid is "+woeid);
 
         response = new ApiUtils().getLocationByDate(String.valueOf(woeid),requestedDay);
-        System.out.println(location+"-"+date);
+        System.out.print(location+"-"+requestedDay+"-");
 
+
+         new ApiUtils().getWeather(String.valueOf(woeid),requestedDay);
 
 
     }
@@ -77,4 +77,16 @@ public class ApiStepDef {
     }
 
 
+    @When("the user looks up the weather for invalid {string} and date of {string}")
+    public void theUserLooksUpTheWeatherForInvalidAndDateOf(String location, String date) {
+
+        String requestedDay = new DateUtils().processDate(date);
+
+        woeid= new ApiUtils().getWoeid(location);
+        System.out.println(location + "'s woeid is "+woeid);
+
+        response = new ApiUtils().getLocationByDate(String.valueOf(woeid),requestedDay);
+        System.out.print(location+"-"+requestedDay+"-");
+
+    }
 }

@@ -1,5 +1,5 @@
-
-Feature:
+@wip
+Feature:Retrieve weather information
 
 
 Scenario:Retrieve weather of tomorrow's  for Nottingham
@@ -19,8 +19,8 @@ Scenario:Retrieve weather of tomorrow's  for Nottingham
 
     Examples:
       | location   | date       |
-      | Nottingham | tomorrow   |
       | Nottingham | today      |
+      | Nottingham | yesterday  |
       | Leeds      | yesterday  |
       | London     | 2021/07/24 |
       | London     | 2019/12/31 |
@@ -31,24 +31,23 @@ Scenario:Retrieve weather of tomorrow's  for Nottingham
       | Cardiff    | 2013/08/15 |
 
 
-    Scenario Outline: Negative scenario/bug
-      Given the user is a MetaWeather client
-      When the user looks up the weather for "<location>" and date of "<date>"
-      Then the endpoint should return status code 404
-      Examples:
-        | location   | date       |
-        | Nottingham | 2022/06/04 |
-        | Nottingham | 2008/03/16 |
-        | Leeds      | 2013/12/12 |
-        | London     | 2021/08/29 |
-
-
 
       Scenario Outline: Negative scenario
         Given the user is a MetaWeather client
-        When the user looks up the weather for "<location>" and date of "<date>"
+        When the user looks up the weather for invalid "<location>" and date of "<date>"
         Then the endpoint should return status code 404
         Examples:
           | location   | date       |
           | 0          | today      |
           | 2222222222 | tomorrow   |
+
+  Scenario Outline: Negative scenario/bug(out of boundary dates)
+    Given the user is a MetaWeather client
+    When the user looks up the weather for "<location>" and date of "<date>"
+    Then the endpoint should return status code 404
+    Examples:
+      | location   | date       |
+      | Nottingham | 2022/06/04 |
+      | Nottingham | 2008/03/16 |
+      | Leeds      | 2013/12/12 |
+      | London     | 2021/08/29 |
