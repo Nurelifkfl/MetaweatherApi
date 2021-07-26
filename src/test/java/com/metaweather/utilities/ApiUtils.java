@@ -23,8 +23,6 @@ public class ApiUtils {
                 .when()
                 .get("/location/search");
 
-        List<String> weather= response.body().path("weather_state_name");
-        System.out.println("weather= "+weather);
 
 
         Assert.assertEquals("Checking response status code 200", response.statusCode(), 200);
