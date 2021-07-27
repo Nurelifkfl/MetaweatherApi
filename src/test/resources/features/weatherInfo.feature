@@ -1,14 +1,14 @@
 @wip
 Feature:Retrieve weather information
 
-
+@positive
 Scenario:Retrieve weather of tomorrow's  for Nottingham
     Given the user is a MetaWeather client
     When the user looks up the weather for "Nottingham" and date of "tomorrow"
     Then the endpoint should return status code 200
     And the payload data should reflect the date of "tomorrow"
 
-
+@positive
   Scenario Outline: Retrieve weather data from <location> for the date of <date>
     Given the user is a MetaWeather client
     When the user looks up the weather for "<location>" and date of "<date>"
@@ -31,7 +31,7 @@ Scenario:Retrieve weather of tomorrow's  for Nottingham
       | Cardiff    | 2013/08/15 |
 
 
-
+@negative
       Scenario Outline: Negative scenario
         Given the user is a MetaWeather client
         When the user looks up the weather for invalid "<location>" and date of "<date>"
@@ -40,7 +40,7 @@ Scenario:Retrieve weather of tomorrow's  for Nottingham
           | location   | date       |
           | 0          | today      |
           | 2222222222 | tomorrow   |
-
+@bug
   Scenario Outline: Negative scenario/bug(out of boundary dates)
     Given the user is a MetaWeather client
     When the user looks up the weather for "<location>" and date of "<date>"

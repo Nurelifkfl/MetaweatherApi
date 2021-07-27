@@ -1,15 +1,47 @@
 # MetaweatherApi
 
-This project is an example of how to setup API tests using BDD approach with Cucumber framework
 
-Used tools and frameworks
 
-1.Rest-Assured-JAVA
-2.Cucumber-BDD Framework
-3.JUNIT
-4.Maven
+###TOOLS AND EXPLANATIONS
 
-This project created with using Cucumber-BDD Framework because it is really reusable, centralized, easy to use, easy to maintain and less redundancy framework.
+>1.The project has been prepared based on Cucumber BDD style.
+> 
+>2.Maven build management tool is used in this project by Java language.
+>
+>3.In the project that includes four scenarios, the first scenario verifies by receiving weather information from the public API server(https://www.metaweather.com/api), the second scenario verifies by receiving weather information with different locations and dates.Third scenario is negative scenario with invalid location.The last scenario is also negative scenario and considered bug(providing invalid dates gives 200 successfull status code,while expecting 404)
+>
+>4.A special tag(@wip,@negative,@positive,@bug) was used in the project. Thus, the desired feature can be run in Runner. 
+
+###HOW TO RUN
+> -<span style="color:red;">></span> Under the runner package "runners" choose "testRunner" class right click and run . <span style="color:brown;">"src > test > java > com > runners > testRunner"</span>
+> 
+> -<span style="color:red;">></span> mvn test --<span style="color:red;">></span> in the IDE console or navigate project path <span style="color:red;">in</span> <span style="color:blue;">command</span> line and run.
+
+###HOW TO CREATE TEST REPORTS
+1-) When you run tests with the **"mvn verify"** command from the console, you can see **Cucumber Html Report** under the target file. 
+**-> target -> cucumber-html-reports > overview-steps.html** (open with chrome option)
+
+2-) Second type of report, the project is run from **testRunner** class, a Cucumber Report link is created in the IDE console automatically.(In project report 78 steps passed, 4 step fails.This failures because of bug)
+
+
+####ASSESSMENT
+>1.Explain why you chose to use those particular tools/frameworks in the technical
+> 
+> -I choosed Cucumber BDD Framework because it is reusable, centralized, easy to use, easy to maintain and less redundancy framework. And using Gherkin language, non-technical people like stakeholders, clients also can understand easily.
+> 
+> 2.Describe the reason for the scope of your solution. Why did you test what you did, and why didn’t you test other
+> 
+> I considered all the possibilities regarding to task. I wrote positive and negative scenarios.
+> I used **Scenario Outline** in order to avoid too many similar scenarios, it provides parameterized scenario script for the feature file.
+> 
+> 
+> 3.What questions would you ask your Product Owner / what information would you need to know, to be able to test the whole MetaWeather API service
+> 
+> There are lots of data in payload when we send a GET request regarding to getting weather. There are time intervals and weather is changing time by time. I would ask whick weather information should i extract? In this project I choosed first one.
+> 
+> 
+> 
+> 4.After completing the technical challenge, what would you do differently if you were asked to do the same challenge again?
 
 
 
