@@ -2,7 +2,7 @@
 
 
 
-###TOOLS AND EXPLANATIONS
+### TOOLS AND EXPLANATIONS
 
 >1.The project has been prepared based on Cucumber BDD style.
 > 
@@ -12,19 +12,19 @@
 >
 >4.A special tag(@wip,@negative,@positive,@bug) was used in the project. Thus, the desired feature can be run in Runner. 
 
-###HOW TO RUN
+### HOW TO RUN
 > -<span style="color:red;">></span> Under the runner package "runners" choose "testRunner" class right click and run . <span style="color:brown;">"src > test > java > com > runners > testRunner"</span>
 > 
 > -<span style="color:red;">></span> mvn test --<span style="color:red;">></span> in the IDE console or navigate project path <span style="color:red;">in</span> <span style="color:blue;">command</span> line and run.
 
-###HOW TO CREATE TEST REPORTS
+### HOW TO CREATE TEST REPORTS
 1-) When you run tests with the **"mvn verify"** command from the console, you can see **Cucumber Html Report** under the target file. 
 **-> target -> cucumber-html-reports > overview-steps.html** (open with chrome option)
 
 2-) Second type of report, the project is run from **testRunner** class, a Cucumber Report link is created in the IDE console automatically.(In project report 78 steps passed, 4 step fails.This failures because of bug)
 
 
-####ASSESSMENT
+### ASSESSMENT
 >1.Explain why you chose to use those particular tools/frameworks in the technical
 > 
 > -I choosed Cucumber BDD Framework because it is reusable, centralized, easy to use, easy to maintain and less redundancy framework. And using Gherkin language, non-technical people like stakeholders, clients also can understand easily.
