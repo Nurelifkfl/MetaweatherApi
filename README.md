@@ -31,18 +31,18 @@
 > 
 > 2.Describe the reason for the scope of your solution. Why did you test what you did, and why didn’t you test other
 > 
-> I considered all the possibilities regarding to task. I wrote positive and negative scenarios.
+> -I considered all the possibilities regarding to task. I wrote positive and negative scenarios.
 > I used **Scenario Outline** in order to avoid too many similar scenarios, it provides parameterized scenario script for the feature file and I can use different examples in examples table.
 > 
 > 
 > 3.What questions would you ask your Product Owner / what information would you need to know, to be able to test the whole MetaWeather API service
 > 
-> There are lots of data in payload when we send a GET request regarding to getting weather. There are time intervals and weather is changing time by time. I would ask whick weather information should i extract? In this project I choosed first one. And also I would ask more details about swagger documentation in order to test all the functionalities.
+> -There are lots of data in payload when we send a GET request regarding to getting weather. There are time intervals and weather is changing time by time. I would ask whick weather information should i extract? In this project I choosed first one. And also I would ask more details about swagger documentation in order to test all the functionalities.
 > 
 > 
 > 4.After completing the technical challenge, what would you do differently if you were asked to do the same challenge again?
 >
->I would use Karate Framework because Karate has too many capabilities include being able to run tests in parallel, HTML reports and compatibility with Continuous Integration tools.
+>-I would use Karate Framework because Karate has too many capabilities include being able to run tests in parallel, HTML reports and compatibility with Continuous Integration tools.
 
 
 
